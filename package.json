@@ -1,0 +1,79 @@
+{
+  "name": "nutanek-utils",
+  "version": "1.0.0",
+  "description": "A collection of utility functions used in SCG Wedo projects.",
+  "type": "module",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./isValidEmail": {
+      "types": "./dist/types/isValidEmail.d.ts",
+      "import": "./dist/esm/isValidEmail.mjs",
+      "require": "./dist/cjs/isValidEmail.cjs"
+    },
+    "./isValidPhoneNumber": {
+      "types": "./dist/types/isValidPhoneNumber.d.ts",
+      "import": "./dist/esm/isValidPhoneNumber.mjs",
+      "require": "./dist/cjs/isValidPhoneNumber.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nutanek/nutanek-utils.git"
+  },
+  "author": "SCG Wedo",
+  "license": "MIT",
+  "homepage": "https://github.com/nutanek/nutanek-utils#readme",
+  "bugs": {
+    "url": "https://github.com/nutanek/nutanek-utils/issues"
+  },
+  "keywords": [
+    "utilities",
+    "functions",
+    "typescript",
+    "helper",
+    "scg"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && rollup -c && node scripts/gen-exports.mjs",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:once": "vitest --run",
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "fast-glob": "^3.3.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3",
+    "rollup": "^4.40.1",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.2"
+  }
+}

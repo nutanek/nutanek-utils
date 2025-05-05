@@ -1,1 +1,1 @@
-# nutanek-utils
+# utilities

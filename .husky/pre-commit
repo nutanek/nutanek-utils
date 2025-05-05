@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+echo '🏗️👷 Styling, testing and building your project before committing'
+
+npx lint-staged ||
+{
+    echo '❌👷🔨❌ Because your lint-staged failed ❌👷🔨❌
+            Lint-staged failed: View the errors above to see why.
+    '
+    exit 1
+}
+
+npm run build ||
+{
+    echo '❌👷🔨❌ Because your build failed ❌👷🔨❌
+            Nest build failed: View the errors above to see why.
+    '
+    exit 1
+}
+
+git diff --quiet package.json || git add package.json
+
+echo '👏👏👏👏... Alright.... Build pass... Trying to test. 📑📑📑📑'
+
+npm run test:once || {
+    echo '❌👷🔨❌ Because your test failed ❌👷🔨❌
+            Test failed: View the errors above to see why.
+    '
+    exit 1
+}
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
